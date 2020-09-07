@@ -1,0 +1,59 @@
+<div class="mt-2 animated fadeIn faster">
+    <h2>Heroe <small>{{ hero.name }}</small></h2>
+    <hr>
+    <form (ngSubmit)="save(formHeroTemplate)" #formHeroTemplate="ngForm">
+
+        <!-- Firebase ID -->
+        <div class="form-group">
+            <label>Firebase ID</label>
+            <input type="text" class="form-control" id="firebaseId" disabled="disabled" placeholder="Firebase ID" name="id" [(ngModel)]="hero.id">
+            <small class="form-text text-muted">Este campo es autogenerado</small>
+        </div>
+
+        <!-- Nombre -->
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="name" placeholder="Nombre del heroe" name="name" [(ngModel)]="hero.name">
+        </div>
+
+        <!-- Poder -->
+        <div class="form-group">
+            <label>Poder</label>
+            <input type="text" class="form-control" id="power" placeholder="Poder del heroe" name="power" [(ngModel)]="hero.power">
+        </div>
+
+        <!-- Estado -->
+        <div class="form-group">
+            <label>Estado</label>
+            <br>
+            <button class="btn btn-outline-success w-25" type="button" *ngIf="hero.live" (click)="hero.live = false">
+                <i class="fa fa-smile-o"></i>
+                Vivo
+            </button>
+            <button class="btn btn-outline-danger w-25" type="button" *ngIf="!hero.live" (click)="hero.live = true">
+                <i class="fa fa-frown-o"></i>
+                Muerto
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+                <i class="fa fa-save mr-1"></i>
+                Guardar
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<div class="row">
+    <div class="col">
+        <button class="btn btn-outline-danger" routerLink="/heros">
+            <i class="fa fa-arrow-left mr-1"></i>
+            Volver
+        </button>
+    </div>
+</div>
